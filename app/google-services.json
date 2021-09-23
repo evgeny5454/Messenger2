@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "697385208552",
+    "project_id": "messenger2-c9cfc",
+    "storage_bucket": "messenger2-c9cfc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:697385208552:android:9938dc7a5e0c65151d175d",
+        "android_client_info": {
+          "package_name": "com.evgeny_m.messenger2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "697385208552-sfgtkn3fjl6jcm5kgbf7bcrrukud5f7d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNrxNU52Cscu7YADtt-VCHJwLQ0av-r8M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "697385208552-sfgtkn3fjl6jcm5kgbf7bcrrukud5f7d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
