@@ -8,7 +8,7 @@
 
         <menu>
             <item
-                android:id="@+id/settings_menu_change_name"
+                android:id="@+id/settings_menu_change_full_name"
                 android:icon="@drawable/ic_baseline_create_24"
                 android:title="Edit name"
                 app:showAsAction="never" />

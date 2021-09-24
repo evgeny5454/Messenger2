@@ -70,7 +70,16 @@ class ContactsFragment : Fragment() {
                 refUsersListener = AppValueEventListener {
                     val contact = it.getCommonModel()
 
-                    holder.userName.text = contact.fullname
+                    if (contact.fullname.isEmpty()) {
+
+                        holder.userName.text = model.fullname
+
+                    } else {
+
+                        holder.userName.text = contact.fullname
+
+                    }
+
                     holder.status.text = contact.state
                     val url = contact.photoUrl
 
@@ -117,7 +126,7 @@ class ContactsFragment : Fragment() {
         }
     }
 
-    companion object{
-         lateinit var ID_USER : String
+    companion object {
+        lateinit var ID_USER: String
     }
 }

@@ -2,14 +2,18 @@ package com.evgeny_m.messenger2.settings_fragments
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import com.evgeny_m.messenger2.MainActivity
+import com.evgeny_m.messenger2.R
 import com.evgeny_m.messenger2.databinding.FragmentChangeNameBinding
 import com.evgeny_m.messenger2.utilits.*
 
 
-class ChangeNameFragment : BaseChangeFragment() {
+class ChangeNameFragment : Fragment() {
 
     private lateinit var binding: FragmentChangeNameBinding
+    private lateinit var toolbar: Toolbar
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,6 +26,18 @@ class ChangeNameFragment : BaseChangeFragment() {
     override fun onResume() {
         super.onResume()
         initFullName()
+        toolbar = binding.chandeFullnameFragmentToolbar
+
+        toolbar.setOnMenuItemClickListener {
+            when (it.itemId){
+                R.id.menu_save -> {
+                    change()
+                    APP_ACTIVITY.onBackPressed()
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun initFullName() {
@@ -34,7 +50,7 @@ class ChangeNameFragment : BaseChangeFragment() {
         }
     }
 
-    override fun change() {
+    private fun change() {
         initFirebase()
         val name = binding.settingsInputName.text.toString()
         val surname = binding.settingsInputSurname.text.toString()
@@ -48,7 +64,7 @@ class ChangeNameFragment : BaseChangeFragment() {
                 .child(FULL_NAME)
                 .setValue(fullName).addOnCompleteListener {
                     if (it.isSuccessful){
-                        showToast("Data update")
+                        //showToast("Data update")
                         USER.fullname = fullName
                         (activity as MainActivity).onBackPressed()
                         hideKeyboard()

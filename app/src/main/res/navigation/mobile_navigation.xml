@@ -14,7 +14,17 @@
         android:id="@+id/navigation_settings"
         android:name="com.evgeny_m.messenger2.fragments_main.SettingsFragment"
         android:label="fragment_settings"
-        tools:layout="@layout/fragment_settings" />
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_navigation_settings_to_changeNameFragment"
+            app:destination="@id/changeNameFragment" />
+        <action
+            android:id="@+id/action_navigation_settings_to_changeBioFragment"
+            app:destination="@id/changeBioFragment" />
+        <action
+            android:id="@+id/action_navigation_settings_to_changeUserNameFragment"
+            app:destination="@id/changeUserNameFragment" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_contacts"
         android:name="com.evgeny_m.messenger2.fragments_main.ContactsFragment"
@@ -26,7 +36,22 @@
     </fragment>
     <fragment
         android:id="@+id/singleChatFragment"
-        android:name="com.evgeny_m.messenger2.fragments_main.SingleChatFragment"
+        android:name="com.evgeny_m.messenger2.fragments_main.single_chat.SingleChatFragment"
         android:label="SingleChatFragment"
         tools:layout="@layout/fragment_single_chat"/>
+    <fragment
+        android:id="@+id/changeNameFragment"
+        android:name="com.evgeny_m.messenger2.settings_fragments.ChangeNameFragment"
+        android:label="fragment_change_name"
+        tools:layout="@layout/fragment_change_name" />
+    <fragment
+        android:id="@+id/changeBioFragment"
+        android:name="com.evgeny_m.messenger2.settings_fragments.ChangeBioFragment"
+        android:label="fragment_change_bio"
+        tools:layout="@layout/fragment_change_bio" />
+    <fragment
+        android:id="@+id/changeUserNameFragment"
+        android:name="com.evgeny_m.messenger2.settings_fragments.ChangeUserNameFragment"
+        android:label="fragment_change_user_name"
+        tools:layout="@layout/fragment_change_user_name" />
 </navigation>

@@ -7,11 +7,11 @@ import androidx.fragment.app.Fragment
 import com.evgeny_m.messenger2.MainActivity
 import com.evgeny_m.messenger2.R
 
-open class BaseChangeFragment: Fragment() {
+open class BaseChangeFragment: Fragment() //{
 
-    override fun onStart() {
+ /*   override fun onStart() {
         super.onStart()
-        setHasOptionsMenu(true)
+        //setHasOptionsMenu(true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -20,8 +20,8 @@ open class BaseChangeFragment: Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
-            R.id.settings_menu_save -> {
-                change()
+            //R.id.settings_menu_save -> {
+               // change()
             }
         }
         return true
@@ -30,4 +30,4 @@ open class BaseChangeFragment: Fragment() {
     open fun change() {
 
     }
-}
+}*/

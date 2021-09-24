@@ -2,22 +2,26 @@ package com.evgeny_m.messenger2.settings_fragments
 
 import android.os.Bundle
 import android.view.*
+import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import com.evgeny_m.messenger2.MainActivity
+import com.evgeny_m.messenger2.R
 import com.evgeny_m.messenger2.databinding.FragmentChangeUserNameBinding
 import com.evgeny_m.messenger2.utilits.*
 import java.util.*
 
 
-class ChangeUserNameFragment : BaseChangeFragment() {
+class ChangeUserNameFragment : Fragment() {
 
     private lateinit var binding: FragmentChangeUserNameBinding
     private lateinit var newUserName: String
     private lateinit var oldUserName: String
+    private lateinit var toolbar: Toolbar
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentChangeUserNameBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -25,6 +29,19 @@ class ChangeUserNameFragment : BaseChangeFragment() {
     override fun onResume() {
         super.onResume()
         initUserName()
+
+        toolbar = binding.changeUsernameFragmentToolbar
+
+        toolbar.setOnMenuItemClickListener {
+            when (it.itemId){
+                R.id.menu_save -> {
+                    change()
+                    APP_ACTIVITY.onBackPressed()
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun initUserName() {
@@ -32,7 +49,7 @@ class ChangeUserNameFragment : BaseChangeFragment() {
         oldUserName = USER.username
     }
 
-    override fun change() {
+    private fun change() {
 
         newUserName = binding.settingsInputUserName.text.toString().lowercase(Locale.getDefault())
         if (newUserName.isEmpty()){
@@ -85,11 +102,11 @@ class ChangeUserNameFragment : BaseChangeFragment() {
     private fun deleteOldUserName() {
         REF_DATABASE_ROOT.child(NODE_USER_NAMES).child(oldUserName).removeValue().addOnCompleteListener {
             if (it.isSuccessful){
-                showToast("Данные обновлены")
+                //showToast("Данные обновлены")
                 (activity as MainActivity).onBackPressed()
                 hideKeyboard()
             } else {
-                showToast("Какието проблемы")
+                //showToast("Какието проблемы")
             }
         }
     }

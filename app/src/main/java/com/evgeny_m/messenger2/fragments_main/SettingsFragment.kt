@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.evgeny_m.messenger2.R
 import com.evgeny_m.messenger2.activites.RegisterActivity
@@ -45,12 +46,17 @@ class SettingsFragment : Fragment() {
         toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.settings_menu_exit -> {
+                    AppStates.updateState(AppStates.OFFLINE)
                     AUTH.signOut()
                     replaceActivity(RegisterActivity())
                     true
                 }
                 R.id.settings_menu_change_photo ->{
                     changePhotoUser()
+                    true
+                }
+                R.id.settings_menu_change_full_name -> {
+                    view?.findNavController()?.navigate(R.id.action_navigation_settings_to_changeNameFragment)
                     true
                 }
                 else -> false
@@ -67,12 +73,12 @@ class SettingsFragment : Fragment() {
         updateUserPhoto()
 
         binding.settingsChangeUserName.setOnClickListener {
-            /*view?.findNavController()
-                ?.navigate(R.id.action_item_menu_navigation_settings_to_changeUserNameFragment)*/
+            view?.findNavController()
+                ?.navigate(R.id.action_navigation_settings_to_changeUserNameFragment)
         }
         binding.settingsChangeBio.setOnClickListener {
-            /*view?.findNavController()
-                ?.navigate(R.id.action_item_menu_navigation_settings_to_changeBioFragment)*/
+            view?.findNavController()
+                ?.navigate(R.id.action_navigation_settings_to_changeBioFragment)
         }
     }
 

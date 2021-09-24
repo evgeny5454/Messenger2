@@ -43,7 +43,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:text="Evgeny Minaenkov"
+                    tools:text="Evgeny Minaenkov"
                     android:textSize="17sp"
                     app:layout_constraintStart_toEndOf="@+id/materialUserPhoto"
                     app:layout_constraintTop_toTopOf="@+id/materialUserPhoto" />
@@ -52,7 +52,7 @@
                     android:id="@+id/singleChatStatus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="online"
+                    tools:text="online"
                     app:layout_constraintBottom_toBottomOf="@+id/materialUserPhoto"
                     app:layout_constraintStart_toStartOf="@+id/single_chat_fragment_user_full_name"
                     app:layout_constraintTop_toBottomOf="@+id/single_chat_fragment_user_full_name" />
@@ -67,18 +67,18 @@
         android:id="@+id/chat_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
+
         tools:listitem="@layout/messege_item"
-        android:layout_marginEnd="16dp"
+
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/chat_send_messege"
+        app:layout_constraintBottom_toTopOf="@+id/chat_input_message"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/single_chat_fragment_app_bar_layout" />
 
 
     <EditText
-        android:id="@+id/chat_send_messege"
+        android:id="@+id/chat_input_message"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

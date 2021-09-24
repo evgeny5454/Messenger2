@@ -4,15 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.Toolbar
+import androidx.fragment.app.Fragment
 import com.evgeny_m.messenger2.MainActivity
+import com.evgeny_m.messenger2.R
 import com.evgeny_m.messenger2.databinding.FragmentChangeBioBinding
 import com.evgeny_m.messenger2.utilits.*
 
 
-class ChangeBioFragment : BaseChangeFragment() {
+class ChangeBioFragment : Fragment() {
 
     private lateinit var binding: FragmentChangeBioBinding
-
+    private lateinit var toolbar:Toolbar
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,10 +28,23 @@ class ChangeBioFragment : BaseChangeFragment() {
     override fun onResume() {
         super.onResume()
         binding.settingsInputBio.setText(USER.bio)
+
+        toolbar = binding.chandeBioFragmentToolbar
+
+        toolbar.setOnMenuItemClickListener {
+            when (it.itemId){
+                R.id.menu_save -> {
+                    change()
+                    APP_ACTIVITY.onBackPressed()
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
-    override fun change() {
-        super.change()
+    private fun change() {
+
         val newBio = binding.settingsInputBio.text.toString()
         REF_DATABASE_ROOT
             .child(NODE_USERS)
@@ -37,7 +53,7 @@ class ChangeBioFragment : BaseChangeFragment() {
             .setValue(newBio)
             .addOnCompleteListener {
                 if (it.isSuccessful){
-                    showToast("Data update")
+                    //showToast("Data update")
                     USER.bio = newBio
                     (activity as MainActivity).onBackPressed()
                     hideKeyboard()
